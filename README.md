@@ -4,199 +4,199 @@
   </a>
 </p>
 
-# Naming cheatsheet
+# İsimlendirme Kuralları
 
-- [English language](#english-language)
-- [Naming convention](#naming-convention)
-- [S-I-D](#s-i-d)
-- [Avoid contractions](#avoid-contractions)
-- [Avoid context duplication](#avoid-context-duplication)
-- [Reflect the expected result](#reflect-the-expected-result)
-- [Naming functions](#naming-functions)
-  - [A/HC/LC pattern](#ahclc-pattern)
-    - [Actions](#actions)
-    - [Context](#context)
-    - [Prefixes](#prefixes)
-- [Singular and Plurals](#singular-and-plurals)
+- [İngilizce](#İngilizce)
+- [İsimlendirme kuralı](#İsimlendirme-kuralı)
+- [K-S-A](#k-s-a)
+- [Kısaltma kullanmayın](#kısaltma-kullanmayın)
+- [Bağlam tekrarı yapmayın](#bağlam-tekrarı-yapmayın)
+- [Beklenen sonucu yansıtın](#beklenen-sonucu-yansıtın)
+- [Fonksiyonları isimlendirmek](#Fonksiyonları-isimlendirmek)
+  - [A/YB/DB deseni](#aybdb-deseni)
+    - [Aksiyonlar](#aksiyonlar)
+    - [Bağlam](#bağlam)
+    - [Önekler](#önekler)
+- [Tekil ve Çoğullar](#singular-and-plurals)
 
 ---
 
-Naming things is hard. This sheet attempts to make it easier.
+Bir şeyleri isimlendirmek zordur. Bu sayfa ise bir şeyleri isimlendirmeyi daha kolay bir hale getirmeye çalışıyor.
 
-Although these suggestions can be applied to any programming language, I will use JavaScript to illustrate them in practice.
+Buradaki öneriler herhangi bir program diline uyarlanabilir olsa da, pratikte açıklamak için JavaScript kullanacağım.
 
-## English language
+## İngilizce
 
-Use English language when naming your variables and functions.
-
-```js
-/* Bad */
-const primerNombre = 'Gustavo'
-const amigos = ['Kate', 'John']
-
-/* Good */
-const firstName = 'Gustavo'
-const friends = ['Kate', 'John']
-```
-
-> Like it or not, English is the dominant language in programming: the syntax of all programming languages is written in English, as well as countless documentations and educational materials. By writing your code in English you dramatically increase its cohesiveness.
-
-## Naming convention
-
-Pick **one** naming convention and follow it. It may be `camelCase`, or `snake_case`, or anyhow else, it does not matter. What matters is for it to remain consistent.
+Değişkenlerinizi ve fonksiyonlarınızı adlandırırken İngilizce kullanın.
 
 ```js
-/* Bad */
-const pages_count = 5
-const shouldUpdate = true
+/* Kötü */
+const adi = "Cenk";
+const arkadaslari = ["Ecenur", "Serkan"];
 
-/* Good */
-const pageCount = 5
-const shouldUpdate = true
-
-/* Good as well */
-const page_count = 5
-const should_update = true
+/* İyi */
+const firstName = "Cenk";
+const friends = ["Ecenur", "Serkan"];
 ```
 
-## S-I-D
+> Beğenin veya beğenmeyin, İngilizce programlama alanında baskın dil: tüm programlama dillerinin sözdizimleri İngilizce, aynı şekilde sayısız dökümantasyon ve eğitim materyali de. İngilizce yazarak kodunuzun tutarlılığını önemli ölçüde artırırsınız.
 
-A name must be _short_, _intuitive_ and _descriptive_:
+## İsimlendirme kuralı
 
-- **Short**. A name must not take long to type and, therefore, remember;
-- **Intuitive**. A name must read naturally, as close to the common speech as possible;
-- **Descriptive**. A name must reflect what it does/possesses in the most efficient way.
+**Bir** adet isimlendirme kuralı belirleyin ve onunla devam edin. Seçtiğiniz kural `camelCase` veya `snake_case` veya herhangi başka bir şey olabilir önemli değil. Önemli olan tutarlı kalmak.
 
 ```js
-/* Bad */
-const a = 5 // "a" could mean anything
-const isPaginatable = a > 10 // "Paginatable" sounds extremely unnatural
-const shouldPaginatize = a > 10 // Made up verbs are so much fun!
+/* Kötü */
+const pages_count = 5;
+const shouldUpdate = true;
 
-/* Good */
-const postCount = 5
-const hasPagination = postCount > 10
-const shouldDisplayPagination = postCount > 10 // alternatively
+/* İyi */
+const pageCount = 5;
+const shouldUpdate = true;
+
+/* Bu da İyi */
+const page_count = 5;
+const should_update = true;
 ```
 
-## Avoid contractions
+## K-S-A
 
-Do **not** use contractions. They contribute to nothing but decreased readability of the code. Finding a short, descriptive name may be hard, but contraction is not an excuse for not doing so.
+Bir isim _kısa_, _sezgisel_ ve _açıklayıcı_ olmalı:
+
+- **Kısa**. Bir ismin yazılması uzun sürmemeli, böylece hatırlanabilir de olacaktır;
+- **Sezgisel**. Bir isim doğal bir şekilde okunabilir, olabildiğince yaygın konuşmaya yakın olmalı;
+- **Açıklayıcı**. Bir isim yaptığı/sahip olduğu şeyi en verimli şekilde yansıtmalı.
 
 ```js
-/* Bad */
-const onItmClk = () => {}
+/* Kötü */
+const a = 5; // "a" her anlama gelebilir
+const isPaginatable = a > 10; // "Paginatable" kulağa hiç doğal gelmiyor
+const shouldPaginatize = a > 10; // Uydurma fiiller çok eğlencelidir!
 
-/* Good */
-const onItemClick = () => {}
+/* İyi */
+const postCount = 5;
+const hasPagination = postCount > 10;
+const shouldDisplayPagination = postCount > 10; // alternatif
 ```
 
-## Avoid context duplication
+## Kısaltma Kullanmayın
 
-A name should not duplicate the context in which it is defined. Always remove the context from a name if that doesn't decrease its readability.
+Kısaltmaları **kullanmayın**. Kodun okunabilirliğinin azalmasından başka hiçbir işe yaramazlar. Kısa ve açıklayıcı bir isim bulmak zor olabilir, ancak kısaltma bunun için bir çözüm değildir.
+
+```js
+/* Kötü */
+const onItmClk = () => {};
+
+/* İyi */
+const onItemClick = () => {};
+```
+
+## Bağlam tekrarı yapmayın
+
+Bir isim, tanımlandığı bağlamı tekrar etmemelidir. Okunabilirliğini azaltmıyorsa her zaman isimden bağlamı kaldırın.
 
 ```js
 class MenuItem {
-  /* Method name duplicates the context (which is "MenuItem") */
+  /* Fonksiyon isminde bağlam tekrar kullanılıyor ("MenuItem" olan) */
   handleMenuItemClick = (event) => { ... }
 
-  /* Reads nicely as `MenuItem.handleClick()` */
+  /* `MenuItem.handleClick()` olarak güzelce okunuyor */
   handleClick = (event) => { ... }
 }
 ```
 
-## Reflect the expected result
+## Beklenen sonucu yansıtın
 
-A name should reflect the expected result.
+Bir isim, beklenen sonucu yansıtmalıdır.
 
 ```jsx
-/* Bad */
-const isEnabled = itemCount > 3
-return <Button disabled={!isEnabled} />
+/* Kötü */
+const isEnabled = itemCount > 3;
+return <Button disabled={!isEnabled} />;
 
-/* Good */
-const isDisabled = itemCount <= 3
-return <Button disabled={isDisabled} />
+/* İyi */
+const isDisabled = itemCount <= 3;
+return <Button disabled={isDisabled} />;
 ```
 
 ---
 
-# Naming functions
+# Fonksiyonları isimlendirmek
 
-## A/HC/LC Pattern
+## A/YB/DB deseni
 
-There is a useful pattern to follow when naming functions:
+Fonksiyonları adlandırırken izlenecek faydalı bir model vardır:
 
 ```
-prefix? + action (A) + high context (HC) + low context? (LC)
+önek? + aksiyon (A) + yüksek bağlam (YB) + düşük bağlam? (DB)
 ```
 
-Take a look at how this pattern may be applied in the table below.
+Aşağıdaki tabloda bu modelin nasıl uygulanabileceğine bir göz atın.
 
-| Name                   | Prefix   | Action (A) | High context (HC) | Low context (LC) |
-| ---------------------- | -------- | ---------- | ----------------- | ---------------- |
-| `getPost`              |          | `get`      | `Post`            |                  |
-| `getPostData`          |          | `get`      | `Post`            | `Data`           |
-| `handleClickOutside`   |          | `handle`   | `Click`           | `Outside`        |
-| `shouldDisplayMessage` | `should` | `Display`  | `Message`         |                  |
+| İsim                   | Önek     | Aksiyon (A) | Yüksek bağlam (YB) | Düşük bağlam (DB) |
+| ---------------------- | -------- | ----------- | ------------------ | ----------------- |
+| `getPost`              |          | `get`       | `Post`             |                   |
+| `getPostData`          |          | `get`       | `Post`             | `Data`            |
+| `handleClickOutside`   |          | `handle`    | `Click`            | `Outside`         |
+| `shouldDisplayMessage` | `should` | `Display`   | `Message`          |                   |
 
-> **Note:** The order of context affects the meaning of a variable. For example, `shouldUpdateComponent` means _you_ are about to update a component, while `shouldComponentUpdate` tells you that _component_ will update on itself, and you are but controlling when it should be updated.
-> In other words, **high context emphasizes the meaning of a variable**.
+> **Not:** Bağlamın sırası bir değişkenin anlamını etkiler. Örneğin, "shouldUpdateComponent" bir bileşeni güncellemek üzere olduğunuz anlamına gelirken, "shouldComponentUpdate" size _component_ öğesinin kendi kendine güncelleneceğini ve ne zaman güncellenmesi gerektiğini sizin kontrol ettiğiniz anlamına gelir.
+> Başka bir deyişle, **yüksek bağlam bir değişkenin anlamını vurgular**.
 
 ---
 
-## Actions
+## Aksiyonlar
 
-The verb part of your function name. The most important part responsible for describing what the function _does_.
+Fonksiyon adınının fiil kısmı. Fonksiyonun _ne yaptığını_ açıklamaktan sorumlu en önemli kısım.
 
 ### `get`
 
-Accesses data immediately (i.e. shorthand getter of internal data).
+Verilere anında erişir (örneğin dahili verilerin kısa toplayıcısı).
 
 ```js
 function getFruitCount() {
-  return this.fruits.length
+  return this.fruits.length;
 }
 ```
 
-> See also [compose](#compose).
+> Ayrıca bakınız [compose](#compose).
 
 ### `set`
 
-Sets a variable in a declarative way, with value `A` to value `B`.
+`A` değerinden `B` değerine bir değişkeni dekleratif bir biçimde değiştirir.
 
 ```js
-let fruits = 0
+let fruits = 0;
 
 function setFruits(nextFruits) {
-  fruits = nextFruits
+  fruits = nextFruits;
 }
 
-setFruits(5)
-console.log(fruits) // 5
+setFruits(5);
+console.log(fruits); // 5
 ```
 
 ### `reset`
 
-Sets a variable back to its initial value or state.
+Bir değişkeni başlangıç değerine veya durumuna geri döndürür.
 
 ```js
-const initialFruits = 5
-let fruits = initialFruits
-setFruits(10)
-console.log(fruits) // 10
+const initialFruits = 5;
+let fruits = initialFruits;
+setFruits(10);
+console.log(fruits); // 10
 
 function resetFruits() {
-  fruits = initialFruits
+  fruits = initialFruits;
 }
 
-resetFruits()
-console.log(fruits) // 5
+resetFruits();
+console.log(fruits); // 5
 ```
 
 ### `fetch`
 
-Request for some data, which takes some indeterminate time (i.e. async request).
+Belirsiz bir süre alan bazı veriler için istek yapar (örneğin, async request).
 
 ```js
 function fetchPosts(postCount) {
@@ -206,163 +206,163 @@ function fetchPosts(postCount) {
 
 ### `remove`
 
-Removes something _from_ somewhere.
+Bir yerden _bir şeyi_ kaldırır.
 
-For example, if you have a collection of selected filters on a search page, removing one of them from the collection is `removeFilter`, **not** `deleteFilter` (and this is how you would naturally say it in English as well):
+Örneğin, bir arama sayfasında seçilen filtrelerden oluşan bir koleksiyonunuz varsa, koleksiyondan birini kaldırmak için `removeFilter` kullanırsınız, `deleteFilter` **değil** (Doğal olarak İngilizce söyleyeceğiniz de budur):
 
 ```js
 function removeFilter(filterName, filters) {
-  return filters.filter((name) => name !== filterName)
+  return filters.filter((name) => name !== filterName);
 }
 
-const selectedFilters = ['price', 'availability', 'size']
-removeFilter('price', selectedFilters)
+const selectedFilters = ["price", "availability", "size"];
+removeFilter("price", selectedFilters);
 ```
 
-> See also [delete](#delete).
+> Ayrıca bakınız [delete](#delete).
 
 ### `delete`
 
-Completely erases something from the realms of existence.
+Varoluş aleminden bir şeyi tamamen siler.
 
-Imagine you are a content editor, and there is that notorious post you wish to get rid of. Once you clicked a shiny "Delete post" button, the CMS performed a `deletePost` action, **not** `removePost`.
+Bir içerik editörü olduğunuzu ve kurtulmak istediğiniz kötü şöhretli bir gönderi olduğunu hayal edin. Parlak bir "Gönderiyi sil" düğmesini tıkladığınızda, CMS bir `deletePost` aksiyonu gerçekleştirdi, `removePost` **değil**.
 
 ```js
 function deletePost(id) {
-  return database.find({ id }).delete()
+  return database.find({ id }).delete();
 }
 ```
 
-> See also [remove](#remove).
+> Ayrıca bakınız [remove](#remove).
 
 ### `compose`
 
-Creates new data from the existing one. Mostly applicable to strings, objects, or functions.
+Mevcut olandan yeni veriler oluşturur. Çoğunlukla stringler, nesneler veya fonksiyonlar için geçerlidir.
 
 ```js
 function composePageUrl(pageName, pageId) {
-  return `${pageName.toLowerCase()}-${pageId}`
+  return `${pageName.toLowerCase()}-${pageId}`;
 }
 ```
 
-> See also [get](#get).
+> Ayrıca bakınız [get](#get).
 
 ### `handle`
 
-Handles an action. Often used when naming a callback method.
+Bir aksiyonu yönetir. Genellikle bir callback fonksiyonunu adlandırırken kullanılır.
 
 ```js
 function handleLinkClick() {
-  console.log('Clicked a link!')
+  console.log("Linke tıklandı!");
 }
 
-link.addEventListener('click', handleLinkClick)
+link.addEventListener("click", handleLinkClick);
 ```
 
 ---
 
-## Context
+## Bağlam
 
-A domain that a function operates on.
+Bir fonksiyonun üzerinde çalıştığı alan.
 
-A function is often an action on _something_. It is important to state what is its operable domain, or at least an expected data type.
+Bir fonksiyon genellikle _bir şey_ üzerine yapılan bir aksiyondur. Çalıştırılabilir alanının veya en azından beklenen bir veri türünün ne olduğunu belirtmek önemlidir.
 
 ```js
-/* A pure function operating with primitives */
+/* Primitivelerle çalışan saf bir fonksiyon */
 function filter(predicate, list) {
-  return list.filter(predicate)
+  return list.filter(predicate);
 }
 
-/* Function operating exactly on posts */
+/* Tam olarak postslarla çalışan bir fonksiyon */
 function getRecentPosts(posts) {
-  return filter(posts, (post) => post.date === Date.now())
+  return filter(posts, (post) => post.date === Date.now());
 }
 ```
 
-> Some language-specific assumptions may allow omitting the context. For example, in JavaScript, it's common that `filter` operates on Array. Adding explicit `filterArray` would be unnecessary.
+> Bazı dile özgü varsayımlar, bağlamın çıkarılmasına izin verebilir. Örneğin, JavaScript'te, `filter` ın Array üzerinde çalışması yaygındır. Açıkça `filterArray` eklemek gereksiz olacaktır.
 
 --
 
-## Prefixes
+## Önekler
 
-Prefix enhances the meaning of a variable. It is rarely used in function names.
+Önek, bir değişkenin anlamını geliştirir. Fonksiyon adlarında nadiren kullanılır.
 
 ### `is`
 
-Describes a characteristic or state of the current context (usually `boolean`).
+Mevcut bağlamın bir karakteristiğini veya durumunu açıklar (genellikle `boolean`).
 
 ```js
-const color = 'blue'
-const isBlue = color === 'blue' // characteristic
-const isPresent = true // state
+const color = "blue";
+const isBlue = color === "blue"; // karakteristik
+const isPresent = true; // durum
 
 if (isBlue && isPresent) {
-  console.log('Blue is present!')
+  console.log("Mavi mevcut!");
 }
 ```
 
 ### `has`
 
-Describes whether the current context possesses a certain value or state (usually `boolean`).
+Mevcut bağlamın belirli bir değere veya duruma sahip olup olmadığını açıklar (genellikle `boolean`).
 
 ```js
-/* Bad */
-const isProductsExist = productsCount > 0
-const areProductsPresent = productsCount > 0
+/* Kötü */
+const isProductsExist = productsCount > 0;
+const areProductsPresent = productsCount > 0;
 
-/* Good */
-const hasProducts = productsCount > 0
+/* İyi */
+const hasProducts = productsCount > 0;
 ```
 
 ### `should`
 
-Reflects a positive conditional statement (usually `boolean`) coupled with a certain action.
+Belirli bir eylemle birlikte pozitif bir koşullu ifadeyi (genellikle `boolean`) yansıtır.
 
 ```js
 function shouldUpdateUrl(url, expectedUrl) {
-  return url !== expectedUrl
+  return url !== expectedUrl;
 }
 ```
 
 ### `min`/`max`
 
-Represents a minimum or maximum value. Used when describing boundaries or limits.
+Minimum veya maksimum değeri temsil eder. Sınırları veya sınırları açıklarken kullanılır.
 
 ```js
 /**
- * Renders a random amount of posts within
- * the given min/max boundaries.
+ * Verilen minimum/maksimum sınırlar dahilinde
+ * rastgele sayıda gönderi oluşturur.
  */
 function renderPosts(posts, minPosts, maxPosts) {
-  return posts.slice(0, randomBetween(minPosts, maxPosts))
+  return posts.slice(0, randomBetween(minPosts, maxPosts));
 }
 ```
 
 ### `prev`/`next`
 
-Indicate the previous or the next state of a variable in the current context. Used when describing state transitions.
+Geçerli bağlamda bir değişkenin önceki veya sonraki durumunu belirtir. Durum geçişlerini açıklarken kullanılır.
 
 ```jsx
 function fetchPosts() {
-  const prevPosts = this.state.posts
+  const prevPosts = this.state.posts;
 
-  const fetchedPosts = fetch('...')
-  const nextPosts = concat(prevPosts, fetchedPosts)
+  const fetchedPosts = fetch("...");
+  const nextPosts = concat(prevPosts, fetchedPosts);
 
-  this.setState({ posts: nextPosts })
+  this.setState({ posts: nextPosts });
 }
 ```
 
-## Singular and Plurals
+## Tekil ve Çoğullar
 
-Like a prefix, variable names can be made singular or plural depending on whether they hold a single value or multiple values.
+Önek gibi, değişken isimleri de tek bir değer veya birden fazla değer bulundurmalarına bağlı olarak tekil veya çoğul yapılabilir.
 
 ```js
 /* Bad */
-const friends = 'Bob'
-const friend = ['Bob', 'Tony', 'Tanya']
+const friends = "Eser";
+const friend = ["Leyla", "Uğur", "Ahsen"];
 
 /* Good */
-const friend = 'Bob'
-const friends = ['Bob', 'Tony', 'Tanya']
+const friend = "Eser";
+const friends = ["Leyla", "Uğur", "Ahsen"];
 ```
