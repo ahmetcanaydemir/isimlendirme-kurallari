@@ -151,7 +151,7 @@ Fonksiyon adınının fiil kısmı. Fonksiyonun _ne yaptığını_ açıklamakta
 
 ### `get`
 
-Verilere anında erişir (örneğin dahili verilerin kısa toplayıcısı).
+Verilere anında erişir.
 
 ```js
 function getFruitCount() {
@@ -281,7 +281,7 @@ function getRecentPosts(posts) {
 
 > Bazı dile özgü varsayımlar, bağlamın çıkarılmasına izin verebilir. Örneğin, JavaScript'te, `filter` ın Array üzerinde çalışması yaygındır. Açıkça `filterArray` eklemek gereksiz olacaktır.
 
---
+---
 
 ## Önekler
 
@@ -358,11 +358,11 @@ function fetchPosts() {
 Önek gibi, değişken isimleri de tek bir değer veya birden fazla değer bulundurmalarına bağlı olarak tekil veya çoğul yapılabilir.
 
 ```js
-/* Bad */
+/* Kötü */
 const friends = "Eser";
 const friend = ["Leyla", "Uğur", "Ahsen"];
 
-/* Good */
+/* İyi */
 const friend = "Eser";
 const friends = ["Leyla", "Uğur", "Ahsen"];
 ```
